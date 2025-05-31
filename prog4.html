@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Programme 4 - Color Buttons</title>
+  <style>
+    body {
+      text-align: center;
+      padding: 50px;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      margin: 0;
+    }
+
+    nav {
+      background-color: #222;
+      padding: 15px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+    }
+
+    nav a {
+      color: white;
+      margin-right: 20px;
+      text-decoration: none;
+    }
+
+    .intro {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 80px;
+      margin-bottom: 30px;
+    }
+
+    .intro p {
+      background-color: crimson;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(223, 122, 122, 0.1);
+    }
+
+    button:hover {
+      background-color: #555;
+      color: #fff;
+    }
+
+    .button-container p {
+      color: rgb(0, 0, 0);
+      font-size: 28px;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 22px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="navbar"></div>
+
+  <div class="intro">
+    <h1>Welcome to my assignment</h1>
+    <p>Please click the button and enjoy the magic</p>
+  </div>
+
+  <div class="button-container">
+    <div>
+      <button id="redBtn">RED</button>
+      <p id="redCount">RED count: 0</p>
+    </div>
+    <div>
+      <button id="greenBtn">GREEN</button>
+      <p id="greenCount">GREEN count: 0</p>
+    </div>
+    <div>
+      <button id="blueBtn">BLUE</button>
+      <p id="blueCount">BLUE count: 0</p>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      fetch('https://zhadley.site/prog08/navbar.html')
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('navbar').innerHTML = data;
+        });
+
+      let redCount = 0;
+      let greenCount = 0;
+      let blueCount = 0;
+
+      document.getElementById('redBtn').addEventListener('click', () => {
+        document.body.style.backgroundColor = 'red';
+        redCount++;
+        document.getElementById('redCount').textContent = 'RED count: ' + redCount;
+      });
+
+      document.getElementById('greenBtn').addEventListener('click', () => {
+        document.body.style.backgroundColor = 'green';
+        greenCount++;
+        document.getElementById('greenCount').textContent = 'GREEN count: ' + greenCount;
+      });
+
+      document.getElementById('blueBtn').addEventListener('click', () => {
+        document.body.style.backgroundColor = 'blue';
+        blueCount++;
+        document.getElementById('blueCount').textContent = 'BLUE count: ' + blueCount;
+      });
+    });
+  </script>
+</body>
+</html>
